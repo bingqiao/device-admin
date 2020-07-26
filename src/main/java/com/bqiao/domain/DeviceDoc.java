@@ -42,7 +42,7 @@ public class DeviceDoc {
     private String sn;
     @Field(type = Text)
     private String mb;
-    @Field(type = Flattened)
+    @Field(type = Object)
     private Map<String, String> customFields;
 
     @Field(type = Long)

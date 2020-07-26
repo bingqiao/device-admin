@@ -24,10 +24,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import static com.bqiao.domain.DeviceDocField.CUSTOMFIELDS;
 import static com.bqiao.domain.DeviceDocField.PROFILE;
 import static java.util.stream.Collectors.toMap;
-import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
-import static org.elasticsearch.index.query.QueryBuilders.termQuery;
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 @Slf4j
 @Component
@@ -165,7 +165,11 @@ public class DeviceDocServiceImpl implements DeviceDocService {
         params.forEach((key, value) -> {
             DeviceDocField field = DeviceDocField.parseText(key);
             if (field != null) {
-                builder.must(termQuery(field.getText(), value));
+                String f = field.getText();
+                if (field == CUSTOMFIELDS) {
+                    f = CUSTOMFIELDS.getText() + "." + key.substring(2);
+                }
+                builder.must(regexpQuery(f, ".*" + value.toLowerCase() + ".*"));
             }
         });
 

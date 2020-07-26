@@ -2,6 +2,8 @@ package com.bqiao.domain;
 
 import java.util.Arrays;
 
+import static org.apache.commons.lang3.ObjectUtils.isEmpty;
+
 public enum DeviceDocField {
     PROFILE("profile", true),
     HOST("host", false),
@@ -30,6 +32,12 @@ public enum DeviceDocField {
         return this.sortable;
     }
     public static DeviceDocField parseText(String text) {
+        if (isEmpty(text)) {
+            return null;
+        }
+        if (text.matches("^c_\\d$")) {
+            return CUSTOMFIELDS;
+        }
         return Arrays.stream(DeviceDocField.values())
                 .filter(v -> v.text.equalsIgnoreCase(text))
                 .findAny()

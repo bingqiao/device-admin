@@ -62,4 +62,15 @@ http://localhost:9200/_cat/indices?v
 ```
 docker exec -it mysql mysql -uroot -p
 ```
+## EC2 Ubuntu
 
+```
+sudo apt install docker.io
+sudo apt install docker-compose
+```
+Use sudo to run docker command otherwise error connecting to daemon 
+`ubuntu docker Got permission denied while trying to connect to the Docker daemon socket at unix`.
+
+```
+apt-cache search docker-compose
+```
