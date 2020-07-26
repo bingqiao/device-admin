@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface DeviceDocService {
     String SEARCH_PARAM_SORT = "s";
     String SEARCH_PARAM_ORDER = "o";
+    String SEARCH_PARAM_MUST = "m";
 
     DeviceDoc createDeviceDoc(Device device);
     List<DeviceDoc> createDeviceDocs(List<Device> devices);

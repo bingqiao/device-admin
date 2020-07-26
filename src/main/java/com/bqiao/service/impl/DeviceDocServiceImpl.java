@@ -162,6 +162,7 @@ public class DeviceDocServiceImpl implements DeviceDocService {
             params = Collections.emptyMap();
         }
         BoolQueryBuilder builder = boolQuery();
+        String must = params.get(SEARCH_PARAM_MUST);
         params.forEach((key, value) -> {
             DeviceDocField field = DeviceDocField.parseText(key);
             if (field != null) {
@@ -169,7 +170,11 @@ public class DeviceDocServiceImpl implements DeviceDocService {
                 if (field == CUSTOMFIELDS) {
                     f = CUSTOMFIELDS.getText() + "." + key.substring(2);
                 }
-                builder.must(regexpQuery(f, ".*" + value.toLowerCase() + ".*"));
+                if ("false".equalsIgnoreCase(must)) {
+                    builder.should(regexpQuery(f, ".*" + value.toLowerCase() + ".*"));
+                } else {
+                    builder.must(regexpQuery(f, ".*" + value.toLowerCase() + ".*"));
+                }
             }
         });
 
