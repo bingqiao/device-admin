@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "ea9f368d-ac0d-4ec6-810e-369376ff125b",
+		"name": "device-service-no-es-calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "upload-csv",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/bingqiao/dev/datto/doc/Practical Task Device Data.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/importexport",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"importexport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-devices-all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/device",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-devices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/device?ids=12345,67890",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"device"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "12345,67890"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-device",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/device/0cdb8275-e646-41d1-847c-dee49fd8cb31",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"0cdb8275-e646-41d1-847c-dee49fd8cb31"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-device",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"profile\": \"{{device}}-profile\",\n\t\"hostname\": \"{{device}}-host\",\n\t\"description\": \"{{device}}-desc\",\n\t\"ipAddress\": \"1.2.3.4\",\n\t\"extIpAddress\": \"5.6.7.8\",\n\t\"lastUser\": \"{{device}}-user\",\n\t\"agentVersion\": \"17\",\n\t\"model\": \"{{device}}-model\",\n\t\"os\": \"macos\",\n\t\"serialNumber\": \"{{device}}-sn\",\n\t\"motherboard\": \"{{device}}-mb\",\n\t\"customFields\": {\n\t\t\"0\": \"{{device}}-custom-0\",\n\t\t\"2\": \"{{device}}-custom-2\"\n\t}\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/device",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-devices-all",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/device",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-devices",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/device?ids=97ab0b94-7b7e-4fe9-b6e7-abae71112888",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"device"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "97ab0b94-7b7e-4fe9-b6e7-abae71112888"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-device",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/device/ab477500-3312-4604-95b5-0c36f2abdd98",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"ab477500-3312-4604-95b5-0c36f2abdd98"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-device-docs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/search",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-device-docs-all",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/search",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-device-docs",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/search?ids=df09ff0f-dff2-4f28-8721-44aadfd5cf1a",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "df09ff0f-dff2-4f28-8721-44aadfd5cf1a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-device-docs-query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/search/query?s=agentver&o=asc&os=mac&model=macb&m=false",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"search",
+						"query"
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "agentver"
+						},
+						{
+							"key": "o",
+							"value": "asc"
+						},
+						{
+							"key": "os",
+							"value": "mac"
+						},
+						{
+							"key": "model",
+							"value": "macb"
+						},
+						{
+							"key": "m",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-device-docs-query-custom-fields",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/search/query?s=agentver&o=asc&c_0=standalon",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"search",
+						"query"
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "agentver"
+						},
+						{
+							"key": "o",
+							"value": "asc"
+						},
+						{
+							"key": "c_0",
+							"value": "standalon"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fe677ba7-dc71-4394-a1b1-d36e943dffdb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c7027131-3eeb-4727-a5b1-3b2b15e9c186",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
