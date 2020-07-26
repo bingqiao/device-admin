@@ -1,0 +1,23 @@
+server:
+  servlet:
+    context-path: /api/v1
+
+spring:
+  jpa:
+    generate-ddl: true
+  datasource:
+    hikari:
+      maximumPoolSize: 20
+
+---
+spring:
+  profiles: mysql
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dadb
+    username: da
+    password: da
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect

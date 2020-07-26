@@ -1,0 +1,22 @@
+version: '3'
+services:
+  es:
+    image: elasticsearch:7.8.0
+    container_name: es780
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+    networks:
+      - demosite
+  da:
+    image: da
+    container_name: da
+    environment:
+      - es.host=es:9200
+    ports:
+      - 8080:8080
+    networks:
+      - demosite
+networks:
+  demosite:

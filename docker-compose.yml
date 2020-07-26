@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  da:
+    image: bqiaodev/deviceadmin
+    container_name: deviceadmin
+    environment:
+      - es.host=es:9200
+      - spring.profiles.active=mysql
+      - spring.datasource.url=jdbc:mysql://db:3306/dadb
+      - spring.datasource.username=da
+      - spring.datasource.password=da
+    ports:
+      - 8080:8080
+    networks:
+      - demosite
+networks:
+  demosite:

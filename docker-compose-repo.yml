@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: letmein
+      MYSQL_DATABASE: dadb
+      MYSQL_USER: da
+      MYSQL_PASSWORD: da
+    ports:
+      - 3306:3306
+    networks:
+      - demosite
+  es:
+    image: elasticsearch:7.8.0
+    container_name: es780
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+    networks:
+      - demosite
+networks:
+  demosite:
